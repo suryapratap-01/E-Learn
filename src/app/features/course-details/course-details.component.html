@@ -1,0 +1,135 @@
+<app-header></app-header>
+
+<div class="cd-banner">
+  <div class="crumbs">
+    <a routerLink="/">Home</a> &gt; <span>{{ course()?.title }}</span>
+  </div>
+
+  <h1 class="title">{{ course()?.title }}</h1>
+  <p class="tagline">{{ course()?.description }}</p>
+
+  <div class="created-by">
+    Created by <a href="#">{{ course()?.provider || 'Course Author' }}</a>
+  </div>
+
+  <div class="cta-row">
+    <button class="enroll">Enroll Now</button>
+    <div class="enrolled">{{ course()?.enrollmentCount | number }} already enrolled</div>
+  </div>
+</div>
+
+<app-metrics-bar
+  [level]="course()?.level || ''"
+  [rating]="course()?.rating || 0"
+  [reviews]="reviewsCount() || course()?.reviewCount || 0"
+  [duration]="durationText()"
+>
+</app-metrics-bar>
+
+<div class="cd-tabs">
+  <nav class="tab-head">
+    <button [class.active]="tab() === 'overview'" (click)="tab.set('overview')">Overview</button>
+    <button [class.active]="tab() === 'content'" (click)="tab.set('content')">
+      Course Content
+    </button>
+    <button [class.active]="tab() === 'author'" (click)="tab.set('author')">Author Details</button>
+    <button [class.active]="tab() === 'testimonials'" (click)="tab.set('testimonials')">
+      Testimonials
+    </button>
+  </nav>
+
+  <section class="tab-body">
+    @if (tab()==='overview') {
+    <div class="overview">
+      <h3>What you'll Learn</h3>
+      <ul>
+        @for (w of (course()?.['whatYouWillLearn'] ?? []); track w) {
+        <li>{{ w }}</li>
+        }
+      </ul>
+
+      <h3>Skills you'll gain</h3>
+      <div class="chips">
+        @for (s of (course()?.['skills'] ?? []); track s) { <span class="chip">{{ s }}</span> }
+      </div>
+
+      @if (course()?.requirements?.length) {
+      <h3>Prerequisites</h3>
+      <ul>
+        @for (r of (course()?.requirements ?? []); track r) {
+        <li>{{ r }}</li>
+        }
+      </ul>
+      }
+      <h3>Description</h3>
+      <p class="desc">{{ course()?.description }}</p>
+    </div>
+    } @if (tab()==='content') {
+    <div class="content">
+      <div class="summary">
+        @let secs = sections().length; @let lects = lectures().length;
+        <span>{{ secs }} Sections • {{ lects }} Lectures • {{ durationText() }} total length</span>
+        <button class="expand" (click)="expandAll()">Expand all sections</button>
+      </div>
+
+      <div class="accordion">
+        @for (s of sections(); track s.id) {
+        <div class="sec">
+          <button class="sec-head" (click)="toggle(s.id)">
+            <span class="stitle">{{ s.title }}</span>
+            <span class="ssum">{{ s.summary }}</span>
+          </button>
+
+          @if (expanded().has(s.id)) {
+          <ul class="lects">
+            @for (l of lecturesBy(s.id); track l.id) {
+            <li>
+              <span class="ltitle">{{ l.title }}</span>
+              <span class="ldur">{{ l.durationMinutes }}m</span>
+            </li>
+            }
+          </ul>
+          }
+        </div>
+        }
+      </div>
+    </div>
+    } @if (tab()==='author') {
+    <div class="author">
+      <h3>{{ course()?.provider || 'Course Author' }}</h3>
+      <p>
+        {{ course()?.provider || 'The author' }} brings industry experience to craft practical
+        lessons. (You can replace this with a real bio field later.)
+      </p>
+      <div class="faq">
+        <details>
+          <summary>Who is this course for?</summary>
+          <p>Anyone looking to upskill.</p>
+        </details>
+        <details>
+          <summary>Do I need prior knowledge?</summary>
+          <p>Check the requirements above.</p>
+        </details>
+      </div>
+    </div>
+    } @if (tab()==='testimonials') {
+    <div class="testimonials">
+      @for (r of reviews(); track r.id) {
+      <div class="review">
+        <div class="rhead">
+          <img [src]="r.authorAvatar || 'https://i.pravatar.cc/60'" alt="" />
+          <div>
+            <div class="name">{{ r.authorName }}</div>
+            <div class="aff">{{ r.affiliation }}</div>
+          </div>
+          <div class="stars">★ {{ r.rating }}</div>
+        </div>
+        <p class="rtext">{{ r.text }}</p>
+      </div>
+      } @if (!reviews().length) {
+      <p class="muted">No reviews yet.</p>
+      }
+    </div>
+    }
+  </section>
+</div>

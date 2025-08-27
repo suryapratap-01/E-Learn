@@ -24,5 +24,13 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./features/dashboard/home/home.component').then((m) => m.HomeComponent),
   },
+  {
+    path: 'course/:id',
+    canActivate: [AuthGuard],
+    loadComponent: () =>
+      import('./features/course-details/course-details.component').then(
+        (m) => m.CourseDetailsComponent
+      ),
+  },
   { path: '**', redirectTo: '' },
 ];

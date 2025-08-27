@@ -29,4 +29,53 @@ export class CourseService {
       )
     );
   }
+
+  // add at bottom of class
+  getCourse(id: string) {
+    return this.http
+      .get<Course>(`/courses/${id}`)
+      .pipe(map((event: any) => (event && event.body ? event.body : event)));
+  }
+
+  getSections(courseId: string) {
+    return this.http
+      .get<any>(`/sections?courseId=${courseId}`)
+      .pipe(
+        map(
+          (b: unknown) =>
+            b as Array<{ id: string; courseId: string; title: string; summary: string }>
+        )
+      );
+  }
+
+  getLectures(courseId: string) {
+    return this.http.get<any>(`/lectures?courseId=${courseId}`).pipe(
+      map(
+        (b: unknown) =>
+          b as Array<{
+            id: string;
+            sectionId: string;
+            title: string;
+            type: 'video' | 'pdf' | 'text';
+            durationMinutes: number;
+          }>
+      )
+    );
+  }
+
+  getReviews(courseId: string) {
+    return this.http.get<any>(`/reviews?courseId=${courseId}`).pipe(
+      map(
+        (b: unknown) =>
+          b as Array<{
+            id: string;
+            rating: number;
+            text: string;
+            authorName: string;
+            authorAvatar?: string;
+            affiliation?: string;
+          }>
+      )
+    );
+  }
 }

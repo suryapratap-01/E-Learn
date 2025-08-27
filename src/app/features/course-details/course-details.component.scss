@@ -1,0 +1,221 @@
+/* ===== Banner ===== */
+.cd-banner {
+  background: linear-gradient(90deg, #3a8456, #6fbf73);
+  color: #1c2b1f;
+  padding: 18px 20px 80px; /* leaves room for metrics overlap */
+  position: relative;
+}
+.cd-banner .crumbs {
+  color: #eaeaea;
+  opacity: 0.9;
+  margin-bottom: 8px;
+}
+.cd-banner .crumbs a {
+  color: #eaeaea;
+}
+.cd-banner .title {
+  color: #fff;
+  margin: 10px 0 8px;
+}
+.cd-banner .tagline {
+  color: #e9ffe6;
+  max-width: 880px;
+}
+.cd-banner .created-by {
+  margin-top: 10px;
+}
+.cd-banner .cta-row {
+  margin-top: 16px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.enroll {
+  background: #b5ff8a;
+  color: #12301b;
+  font-weight: 800;
+  border: 0;
+  border-radius: 10px;
+  padding: 10px 14px;
+}
+.enrolled {
+  color: #eaeaea;
+}
+
+/* ===== Metrics Bar placement (below banner, slight overlap) ===== */
+app-metrics-bar {
+  display: block;
+  margin: -40px 20px 0; /* gentle overlap with banner bottom */
+  z-index: 2;
+  position: relative;
+}
+
+/* ===== Tabs (below metrics) ===== */
+.cd-tabs {
+  margin: 20px 20px 40px;
+}
+
+.tab-head {
+  display: flex;
+  gap: 8px;
+  background: #292929;
+  padding: 8px;
+  border-radius: 14px 14px 0 0;
+  margin-bottom: -1px;
+}
+.tab-head button {
+  background: #343434;
+  color: #eaeaea;
+  border: 1px solid #414141;
+  border-radius: 10px;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+.tab-head button.active {
+  background: #3d5f47;
+  border-color: #4a7a59;
+}
+
+.tab-body {
+  background: #2b2b2b;
+  border: 1px solid #3a3a3a;
+  border-top: 0;
+  padding: 18px;
+  border-radius: 0 0 14px 14px;
+  color: #eaeaea;
+}
+
+/* ===== Overview tab ===== */
+.overview ul {
+  margin: 0;
+  padding-left: 18px;
+}
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+.chip {
+  background: #3a3a3a;
+  padding: 4px 10px;
+  border-radius: 16px;
+  font-size: 0.85rem;
+}
+.desc {
+  opacity: 0.95;
+}
+
+/* ===== Course Content tab ===== */
+.content .summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.expand {
+  border: 1px solid #3a3a3a;
+  background: #343434;
+  color: #eaeaea;
+  border-radius: 8px;
+  padding: 6px 10px;
+  cursor: pointer;
+}
+.accordion .sec {
+  border: 1px solid #3a3a3a;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  overflow: hidden;
+}
+.sec-head {
+  width: 100%;
+  text-align: left;
+  background: #343434;
+  color: #eaeaea;
+  border: 0;
+  padding: 12px;
+  display: flex;
+  justify-content: space-between;
+}
+.stitle {
+  font-weight: 600;
+}
+.ssum {
+  opacity: 0.8;
+}
+
+.lects {
+  list-style: none;
+  margin: 0;
+  padding: 8px 12px;
+  display: grid;
+  gap: 8px;
+}
+.lects li {
+  display: flex;
+  justify-content: space-between;
+  background: #2f2f2f;
+  border-radius: 8px;
+  padding: 8px 10px;
+}
+.ldur {
+  opacity: 0.8;
+}
+
+/* ===== Author tab ===== */
+.author .faq {
+  margin-top: 12px;
+}
+.author details {
+  background: #343434;
+  padding: 8px 10px;
+  border-radius: 8px;
+  margin-bottom: 8px;
+}
+
+/* ===== Testimonials tab ===== */
+.testimonials .review {
+  background: #333;
+  border: 1px solid #444;
+  border-radius: 10px;
+  padding: 12px;
+  margin-bottom: 10px;
+}
+.rhead {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.rhead img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+.rhead .stars {
+  margin-left: auto;
+  font-weight: 700;
+}
+.rtext {
+  margin: 8px 0 0;
+}
+.muted {
+  opacity: 0.7;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 900px) {
+  app-metrics-bar {
+    margin: -30px 12px 0;
+  }
+  .cd-tabs {
+    margin: 16px 12px 28px;
+  }
+  .tab-body {
+    padding: 14px;
+  }
+  .content .summary {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+}

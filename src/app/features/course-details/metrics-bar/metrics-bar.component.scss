@@ -1,0 +1,33 @@
+.metrics {
+  background: #2c2c2c;
+  color: #eaeaea;
+  border-radius: 18px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr;
+  padding: 14px 18px;
+  align-items: center;
+}
+.item .k {
+  font-size: 0.8rem;
+  opacity: 0.8;
+}
+.item .v {
+  font-weight: 600;
+  margin-top: 4px;
+}
+.sep {
+  height: 24px;
+  width: 1px;
+  background: #3a3a3a;
+  justify-self: center;
+}
+
+@media (max-width: 900px) {
+  .metrics {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .sep {
+    display: none;
+  }
+}

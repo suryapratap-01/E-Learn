@@ -11,4 +11,9 @@ export interface Course {
   enrollmentCount: number;
   badges?: ('New Launch' | 'Bestseller' | 'Highest Rated')[];
   progressPercent?: number;
+  description?: string;
+  provider?: string;
+  whatYouWillLearn?: string[];
+  skills?: string[];
+  requirements?: string[];
 }
