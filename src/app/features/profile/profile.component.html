@@ -1,0 +1,56 @@
+<app-header></app-header>
+
+<div class="profile-page">
+  <section class="hero">
+    <div class="who">
+      <img class="avatar" [src]="user()?.avatarUrl || 'https://i.pravatar.cc/120'" alt="avatar" />
+      <div class="id">
+        <h1>{{ user()?.name }}</h1>
+        <div class="meta">
+          @for (r of (user()?.roles ?? []); track r) {
+          <span class="pill">{{ r }}</span>
+          }
+        </div>
+        <div class="muted">
+          {{ user()?.email }} • Joined: {{ user()?.joinedAt | date : 'mediumDate' }}
+        </div>
+      </div>
+    </div>
+
+    @if (user()?.bio) {
+    <p class="bio">{{ user()?.bio }}</p>
+    }
+  </section>
+
+  <section class="stats">
+    <app-stat-card
+      title="Enrolled Courses"
+      [value]="stats().enrolled"
+      cta="View All"
+    ></app-stat-card>
+    <app-stat-card
+      title="Learning Hours"
+      [value]="stats().learningHours"
+      cta="View Report"
+    ></app-stat-card>
+    <app-stat-card
+      title="Certificates"
+      [value]="stats().certificates"
+      cta="Download"
+    ></app-stat-card>
+  </section>
+
+  <section class="enrolled">
+    <div class="head"><h2>My Courses</h2></div>
+
+    @if (enrolled().length) {
+    <div class="grid">
+      @for (c of enrolled(); track c.id) {
+      <app-course-card [course]="c"></app-course-card>
+      }
+    </div>
+    } @else {
+    <div class="empty">You haven’t enrolled in any courses yet.</div>
+    }
+  </section>
+</div>

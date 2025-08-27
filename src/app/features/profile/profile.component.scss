@@ -1,0 +1,92 @@
+.profile-page {
+  min-height: 100svh;
+  background: #1f1f1f;
+  color: #eaeaea;
+  padding: 16px 20px 40px;
+}
+
+/* Top block */
+.hero {
+  background: #2a2a2a;
+  border: 1px solid #3a3a3a;
+  border-radius: 16px;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+.who {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.avatar {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.id h1 {
+  margin: 0 0 6px;
+  font-size: 1.6rem;
+}
+.meta {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+.pill {
+  background: #3b3b3b;
+  padding: 2px 8px;
+  border-radius: 9999px;
+  font-size: 0.8rem;
+}
+.muted {
+  opacity: 0.8;
+}
+.bio {
+  margin: 10px 0 0;
+  background: #262626;
+  padding: 10px 12px;
+  border-radius: 10px;
+}
+
+/* Stats row */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin: 16px 0 22px;
+}
+
+/* Enrolled grid */
+.enrolled .head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 0 10px;
+}
+.enrolled h2 {
+  margin: 0;
+  font-size: 1.1rem;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 14px;
+}
+.empty {
+  background: #2a2a2a;
+  border: 1px solid #3a3a3a;
+  border-radius: 12px;
+  padding: 18px;
+  text-align: center;
+  opacity: 0.85;
+}
+
+@media (max-width: 900px) {
+  .stats {
+    grid-template-columns: 1fr;
+  }
+  .who {
+    align-items: flex-start;
+  }
+}

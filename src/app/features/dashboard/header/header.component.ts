@@ -51,6 +51,11 @@ export class HeaderComponent {
   toggleMenu() {
     this.showMenu.set(!this.showMenu());
   }
+  // inside class HeaderComponent
+  closeMenu() {
+    this.showMenu.set(false);
+  }
+
   logout() {
     this.auth.logout();
     location.href = '/auth/sign-in';

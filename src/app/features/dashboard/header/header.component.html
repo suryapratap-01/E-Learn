@@ -32,10 +32,13 @@
           <div class="role">{{ (user()?.roles || []).join(', ') }}</div>
         </div>
       </div>
-      <a routerLink="/profile">My Profile</a>
-      <a routerLink="/author">My Courses</a>
-      @if (user()?.roles?.includes('Admin')) { <a routerLink="/admin">Admin Console</a> }
-      <a routerLink="/blog">Blog</a>
+
+      <a routerLink="/profile" (click)="closeMenu()">My Profile</a>
+      <a routerLink="/author" (click)="closeMenu()">My Courses</a>
+      @if (user()?.roles?.includes('Admin')) {
+      <a routerLink="/admin" (click)="closeMenu()">Admin Console</a>
+      }
+      <a routerLink="/blog" (click)="closeMenu()">Blog</a>
       <button (click)="logout()">Log Out</button>
     </div>
     }
