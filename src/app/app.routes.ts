@@ -22,7 +22,7 @@ export const routes: Routes = [
     path: '',
     canActivate: [AuthGuard],
     loadComponent: () =>
-      import('./features/auth/post-login-dummy.component').then((m) => m.PostLoginDummyComponent),
+      import('./features/dashboard/home/home.component').then((m) => m.HomeComponent),
   },
   { path: '**', redirectTo: '' },
 ];

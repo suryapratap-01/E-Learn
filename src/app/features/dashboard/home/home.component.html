@@ -1,0 +1,43 @@
+<app-header></app-header>
+
+<div class="page">
+  <div class="banner">
+    <div class="banner-inner">LOREM IPSUM DOLOR</div>
+  </div>
+
+  <section class="stats">
+    <app-stat-card title="My Goals" [value]="stats().goals" cta="View All"></app-stat-card>
+    <app-stat-card
+      title="Enrolled Courses"
+      [value]="stats().enrolled"
+      cta="View All"
+    ></app-stat-card>
+    <app-stat-card
+      title="Certificates Earned"
+      [value]="stats().certificates"
+      cta="Download"
+    ></app-stat-card>
+  </section>
+
+  <section class="carousel">
+    <div class="row-head">
+      <h2>Last Viewed Courses</h2>
+    </div>
+    <div class="row-scroll">
+      @for (c of lastViewed(); track c.id) {
+      <app-course-card [course]="c"></app-course-card>
+      }
+    </div>
+  </section>
+
+  <section class="carousel">
+    <div class="row-head">
+      <h2>Newly Launched</h2>
+    </div>
+    <div class="row-scroll">
+      @for (c of newlyLaunched(); track c.id) {
+      <app-course-card [course]="c"></app-course-card>
+      }
+    </div>
+  </section>
+</div>

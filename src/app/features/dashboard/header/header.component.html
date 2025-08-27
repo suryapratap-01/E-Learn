@@ -1,0 +1,43 @@
+<header class="topbar">
+  <div class="brand">Product Name</div>
+
+  <div class="search">
+    <input
+      type="text"
+      placeholder="Search Courses"
+      [value]="q"
+      (input)="onInput($event.target.value)"
+    />
+
+    @if (q) { <button class="clear" (click)="clear()">×</button> } @if (showSuggest()) {
+    <ul class="suggest">
+      @for (s of suggestions(); track s) {
+      <li (click)="q = s; showSuggest.set(false)">{{ s }}</li>
+      }
+    </ul>
+    }
+  </div>
+
+  <div class="spacer"></div>
+  <button class="icon" aria-label="notifications">🔔</button>
+
+  <div class="avatar" (click)="toggleMenu()">
+    <img [src]="user()?.avatarUrl || 'https://i.pravatar.cc/40'" alt="avatar" />
+    @if (showMenu()) {
+    <div class="menu">
+      <div class="head">
+        <img [src]="user()?.avatarUrl || 'https://i.pravatar.cc/40'" alt="" />
+        <div>
+          <div class="name">{{ user()?.name }}</div>
+          <div class="role">{{ (user()?.roles || []).join(', ') }}</div>
+        </div>
+      </div>
+      <a routerLink="/profile">My Profile</a>
+      <a routerLink="/author">My Courses</a>
+      @if (user()?.roles?.includes('Admin')) { <a routerLink="/admin">Admin Console</a> }
+      <a routerLink="/blog">Blog</a>
+      <button (click)="logout()">Log Out</button>
+    </div>
+    }
+  </div>
+</header>

@@ -1,0 +1,31 @@
+<div class="card">
+  <div class="thumb">
+    <img [src]="course.thumbnailUrl" [alt]="course.title" />
+
+    @for (b of course.badges ?? []; track b) {
+    <div class="badge">{{ b }}</div>
+    } @if (course.progressPercent; as p) {
+    <div class="progress">
+      <span>{{ p }}% Complete</span>
+      <div class="bar"><i [style.width.%]="p"></i></div>
+    </div>
+    }
+  </div>
+
+  <div class="body">
+    <h4 class="title" [title]="course.title">{{ course.title }}</h4>
+
+    <div class="meta">
+      <span class="rating">★ {{ course.rating }}</span>
+      <span class="muted">({{ course.reviewCount }} reviews)</span>
+      <span class="dot">•</span>
+      <span class="enrolled">{{ course.enrollmentCount | number }} Enrolled</span>
+    </div>
+
+    <div class="meta2">
+      <span class="pill">{{ course.level }}</span>
+      <span class="dot">•</span>
+      <span class="duration">{{ course.durationMinutes / 60 | number : '1.0-0' }}h</span>
+    </div>
+  </div>
+</div>

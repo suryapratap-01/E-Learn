@@ -1,0 +1,78 @@
+.card {
+  background: #2f2f2f;
+  color: #eaeaea;
+  border-radius: 16px;
+  overflow: hidden;
+  width: 260px;
+}
+.thumb {
+  position: relative;
+  height: 140px;
+}
+.thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #3a8456;
+  color: #fff;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 0.72rem;
+}
+.progress {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.55);
+  padding: 6px 10px;
+  font-size: 0.74rem;
+}
+.progress .bar {
+  margin-top: 4px;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 6px;
+  overflow: hidden;
+}
+.progress .bar i {
+  display: block;
+  height: 100%;
+  background: #79b06a;
+}
+.body {
+  padding: 12px 14px 16px;
+}
+.title {
+  margin: 0 0 8px;
+  font-size: 1rem;
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.meta,
+.meta2 {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+}
+.pill {
+  background: #3b3b3b;
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-size: 0.74rem;
+}
+.muted {
+  opacity: 0.6;
+}
+.dot {
+  opacity: 0.6;
+}
