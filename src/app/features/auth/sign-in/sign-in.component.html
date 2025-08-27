@@ -1,0 +1,32 @@
+<div class="auth-wrap">
+  <div class="left"></div>
+  <div class="right">
+    <div class="brand">Product Name</div>
+    <h1>Welcome!</h1>
+    <p>Sign in to your Learning account</p>
+
+    <form [formGroup]="form" (ngSubmit)="submit()" novalidate>
+      <div class="form-field">
+        <label>User Name / Email</label>
+        <input type="text" formControlName="identifier" />
+      </div>
+
+      <div class="form-field password">
+        <label>Password</label>
+        <input [type]="hide ? 'password' : 'text'" formControlName="password" />
+        <span class="toggle" (click)="hide = !hide">
+          {{ hide ? '👁️' : '🚫' }}
+        </span>
+      </div>
+
+      <div class="row">
+        <label><input type="checkbox" formControlName="remember" /> Remember Me</label>
+        <a href="#">Forgot Password?</a>
+      </div>
+
+      <button type="submit" class="cta" [disabled]="form.invalid">SIGN IN</button>
+    </form>
+
+    <div class="foot">Don't have account yet? <a routerLink="/auth/sign-up">Register now</a></div>
+  </div>
+</div>

@@ -1,0 +1,160 @@
+/* Two-column, full-bleed layout */
+.auth-wrap {
+  height: 100svh; /* supports iOS dynamic bars; fallback is 100vh */
+  min-height: 100vh;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: #1f1f1f;
+  color: #eaeaea;
+  overflow: hidden; /* prevents stray scrollbars from minor rounding */
+}
+
+/* Left illustration panel (solid green) */
+.left {
+  height: 100%;
+  background: #79b06a url('/assets/illustrations/login.svg') center/60% no-repeat;
+}
+
+/* Right form panel */
+.right {
+  height: 100%;
+  display: grid;
+  align-content: center;
+  padding: 0 6vw;
+  overflow-y: auto; /* if the form gets tall on small screens */
+}
+
+.brand {
+  color: #b5ff8a;
+  font-weight: 700;
+  margin-bottom: 24px;
+  letter-spacing: 0.02em;
+}
+h1 {
+  margin: 0 0 8px;
+  font-size: 2rem;
+  font-weight: 800;
+}
+p {
+  margin: 0 0 22px;
+  opacity: 0.9;
+}
+
+form {
+  display: grid;
+  gap: 16px;
+  margin: 4px 0 8px;
+}
+
+/* Inputs */
+.form-field {
+  display: flex;
+  flex-direction: column;
+}
+.form-field label {
+  font-size: 0.9rem;
+  margin-bottom: 6px;
+  opacity: 0.85;
+}
+.form-field input {
+  height: 48px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid #444;
+  background: #2a2a2a;
+  color: #eaeaea;
+  font-size: 1rem;
+}
+.form-field input:focus {
+  outline: none;
+  border-color: #79b06a;
+  box-shadow: 0 0 0 2px rgba(121, 176, 106, 0.25);
+}
+.form-field small {
+  margin-top: 6px;
+  font-size: 0.8rem;
+  color: #e58e8e;
+}
+
+/* Password visibility toggle */
+.password {
+  position: relative;
+}
+.password input {
+  padding-right: 44px;
+} /* room for the eye */
+.password .toggle {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 28px;
+  height: 28px;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  opacity: 0.75;
+  user-select: none;
+  line-height: 0;
+}
+.password .toggle:hover {
+  opacity: 1;
+}
+
+/* Checkbox row & links */
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.9rem;
+}
+.row a {
+  color: #9fd98a;
+  text-decoration: none;
+}
+.row a:hover {
+  text-decoration: underline;
+}
+
+/* CTA */
+.cta {
+  margin-top: 6px;
+  background: #79b06a;
+  color: #132314;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  padding: 12px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+}
+.cta:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.foot {
+  margin-top: 14px;
+  opacity: 0.85;
+}
+.foot a {
+  color: #9fd98a;
+  text-decoration: none;
+}
+.foot a:hover {
+  text-decoration: underline;
+}
+
+/* Stack on small screens */
+@media (max-width: 900px) {
+  .auth-wrap {
+    grid-template-columns: 1fr;
+  }
+  .left {
+    display: none;
+  }
+  .right {
+    padding: 8vw 6vw;
+  }
+}

@@ -1,0 +1,40 @@
+<div class="auth-wrap">
+  <div class="left"></div>
+
+  <div class="right">
+    <div class="brand">Product Name</div>
+    <h1>Sign up</h1>
+    <p>Enter details mentioned below</p>
+
+    <form [formGroup]="form" (ngSubmit)="submit()" novalidate>
+      <div class="form-field">
+        <label for="name">User Name</label>
+        <input id="name" type="text" formControlName="name" />
+        <small *ngIf="f.name.touched && f.name.invalid">Name must be at least 3 characters.</small>
+      </div>
+
+      <div class="form-field">
+        <label for="email">Email</label>
+        <input id="email" type="email" formControlName="email" />
+        <small *ngIf="f.email.touched && f.email.invalid">Please enter a valid email.</small>
+      </div>
+
+      <div class="form-field password">
+        <label for="pwd">Password</label>
+        <input id="pwd" [type]="hide ? 'password' : 'text'" formControlName="password" />
+        <span class="toggle" (click)="hide = !hide">{{ hide ? '👁️' : '🚫' }}</span>
+        <small *ngIf="f.password.touched && f.password.invalid">Min 6 characters.</small>
+      </div>
+
+      <label class="checkbox">
+        <input type="checkbox" formControlName="agree" />
+        I agree to the terms and conditions by signing up
+      </label>
+      <small *ngIf="f.agree.touched && f.agree.invalid">You must agree to continue.</small>
+
+      <button type="submit" class="cta" [disabled]="form.invalid">Register</button>
+    </form>
+
+    <div class="foot">Already have an Account? <a routerLink="/auth/sign-in">Login</a></div>
+  </div>
+</div>
