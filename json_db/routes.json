@@ -1,0 +1,17 @@
+{
+  "/auth/login": "/login",
+  "/auth/register": "/register",
+
+  "/me": "/users/:id",
+
+  "/courses/:id/sections": "/sections?courseId=:id&_sort=title",
+  "/courses/:id/lectures": "/lectures?courseId=:id&_sort=title",
+
+  "/search/courses": "/courses",
+  "/courses/:id/reviews": "/reviews?courseId=:id&_sort=id&_order=desc",
+
+  "/users/:id/enrollments": "/enrollments?userId=:id",
+  "/users/:id/progress": "/progress?userId=:id",
+
+  "/banners/active": "/banners"
+}

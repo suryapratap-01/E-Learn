@@ -1,0 +1,647 @@
+{
+  "users": [
+    {
+      "id": "u1",
+      "name": "Harry Shimron",
+      "email": "harry@exam.com",
+      "password": "password",
+      "roles": ["Learner"],
+      "joinedAt": "2025-05-01T10:00:00.000Z",
+      "avatarUrl": "/assets/avatars/harry.png",
+      "bio": "DC Software Engineer"
+    },
+    {
+      "id": "admin1",
+      "name": "Admin User",
+      "email": "admin@example.com",
+      "password": "Admin123!",
+      "roles": ["Admin", "Author", "Learner"],
+      "joinedAt": "2025-04-01T10:00:00.000Z",
+      "avatarUrl": "/assets/avatars/admin.png"
+    },
+    {
+      "id": "u2",
+      "name": "Sarah Chen",
+      "email": "sarah.chen@example.com",
+      "password": "SecurePass123!",
+      "roles": ["Learner", "Author"],
+      "joinedAt": "2025-03-15T14:30:00.000Z",
+      "avatarUrl": "/assets/avatars/sarah.png",
+      "bio": "UX Designer passionate about accessibility and user research"
+    },
+    {
+      "id": "u3",
+      "name": "Marcus Johnson",
+      "email": "marcus.j@example.com",
+      "password": "MyPassword456!",
+      "roles": ["Learner"],
+      "joinedAt": "2025-06-10T08:45:00.000Z",
+      "avatarUrl": "/assets/avatars/marcus.png",
+      "bio": "Data Scientist exploring machine learning and AI applications"
+    },
+    {
+      "id": "u4",
+      "name": "Lisa Rodriguez",
+      "email": "lisa.rodriguez@example.com",
+      "password": "StrongPass789!",
+      "roles": ["Learner"],
+      "joinedAt": "2025-02-28T16:20:00.000Z",
+      "avatarUrl": "/assets/avatars/lisa.png",
+      "bio": "Product Manager transitioning to tech from finance background"
+    },
+    {
+      "id": "u5",
+      "name": "David Kim",
+      "email": "david.kim@example.com",
+      "password": "DevSecure101!",
+      "roles": ["Author", "Learner"],
+      "joinedAt": "2025-01-12T11:15:00.000Z",
+      "avatarUrl": "/assets/avatars/david.png",
+      "bio": "Full-stack developer and tech educator with 8+ years experience"
+    }
+  ],
+  "courses": [
+    {
+      "id": "c1",
+      "title": "Advanced Python Programming",
+      "provider": "LinkedIn Learning",
+      "thumbnailUrl": "/assets/courses/c1.jpg",
+      "level": "Intermediate",
+      "durationMinutes": 780,
+      "rating": 4.7,
+      "reviews": 983,
+      "enrollments": 45908,
+      "skills": ["Generators", "Asyncio", "Typing"],
+      "whatYouWillLearn": [
+        "Write idiomatic Python",
+        "Use asyncio for concurrency"
+      ],
+      "requirements": ["Basic Python"],
+      "description": "Deep dive into advanced patterns.",
+      "badges": ["Highest Rated"],
+      "status": "Published"
+    },
+    {
+      "id": "c2",
+      "title": "Angular for Beginners",
+      "provider": "Coursera",
+      "thumbnailUrl": "/assets/courses/c2.jpg",
+      "level": "Beginner",
+      "durationMinutes": 420,
+      "rating": 4.5,
+      "reviews": 320,
+      "enrollments": 12000,
+      "skills": ["Components", "Routing", "RxJS"],
+      "whatYouWillLearn": ["Build SPAs", "Use RxJS effectively"],
+      "description": "From zero to hero.",
+      "badges": ["New Launch"],
+      "status": "Draft"
+    },
+    {
+      "id": "c3",
+      "title": "React Mastery: From Hooks to Advanced Patterns",
+      "provider": "Udemy",
+      "thumbnailUrl": "/assets/courses/c3.jpg",
+      "level": "Advanced",
+      "durationMinutes": 960,
+      "rating": 4.8,
+      "reviews": 1247,
+      "enrollments": 28500,
+      "skills": [
+        "React Hooks",
+        "Context API",
+        "Performance Optimization",
+        "Testing"
+      ],
+      "whatYouWillLearn": [
+        "Master advanced React patterns",
+        "Optimize React applications",
+        "Implement comprehensive testing strategies"
+      ],
+      "requirements": ["Intermediate React", "JavaScript ES6+"],
+      "description": "Complete guide to advanced React development with modern patterns and best practices.",
+      "badges": ["Editor's Choice", "Highest Rated"],
+      "status": "Published"
+    },
+    {
+      "id": "c4",
+      "title": "Machine Learning Fundamentals",
+      "provider": "edX",
+      "thumbnailUrl": "/assets/courses/c4.jpg",
+      "level": "Intermediate",
+      "durationMinutes": 1200,
+      "rating": 4.6,
+      "reviews": 892,
+      "enrollments": 34200,
+      "skills": [
+        "Supervised Learning",
+        "Unsupervised Learning",
+        "Neural Networks",
+        "Scikit-learn"
+      ],
+      "whatYouWillLearn": [
+        "Understand core ML algorithms",
+        "Build predictive models",
+        "Evaluate model performance"
+      ],
+      "requirements": ["Basic Python", "Statistics Knowledge"],
+      "description": "Comprehensive introduction to machine learning concepts and practical implementation.",
+      "badges": ["Popular"],
+      "status": "Published"
+    },
+    {
+      "id": "c5",
+      "title": "UI/UX Design Principles",
+      "provider": "Skillshare",
+      "thumbnailUrl": "/assets/courses/c5.jpg",
+      "level": "Beginner",
+      "durationMinutes": 480,
+      "rating": 4.4,
+      "reviews": 567,
+      "enrollments": 18900,
+      "skills": ["Design Thinking", "Prototyping", "User Research", "Figma"],
+      "whatYouWillLearn": [
+        "Apply design thinking methodology",
+        "Create user-centered designs",
+        "Build interactive prototypes"
+      ],
+      "requirements": ["No prerequisites"],
+      "description": "Learn essential UI/UX design principles and create compelling user experiences.",
+      "badges": ["Beginner Friendly"],
+      "status": "Published"
+    }
+  ],
+  "sections": [
+    {
+      "id": "s1",
+      "courseId": "c1",
+      "title": "Intro",
+      "summary": "3 Lectures • 15m"
+    },
+    {
+      "id": "s2",
+      "courseId": "c1",
+      "title": "Asyncio",
+      "summary": "5 Lectures • 60m"
+    },
+    {
+      "id": "s3",
+      "courseId": "c3",
+      "title": "React Fundamentals Review",
+      "summary": "4 Lectures • 45m"
+    },
+    {
+      "id": "s4",
+      "courseId": "c3",
+      "title": "Advanced Hooks",
+      "summary": "6 Lectures • 90m"
+    },
+    {
+      "id": "s5",
+      "courseId": "c4",
+      "title": "Introduction to ML",
+      "summary": "5 Lectures • 75m"
+    },
+    {
+      "id": "s6",
+      "courseId": "c4",
+      "title": "Supervised Learning",
+      "summary": "8 Lectures • 120m"
+    },
+    {
+      "id": "s7",
+      "courseId": "c5",
+      "title": "Design Thinking Process",
+      "summary": "4 Lectures • 60m"
+    }
+  ],
+  "lectures": [
+    {
+      "id": "l1",
+      "courseId": "c1",
+      "sectionId": "s1",
+      "title": "Welcome",
+      "type": "video",
+      "durationMinutes": 5,
+      "src": "/assets/video/c1-l1.mp4"
+    },
+    {
+      "id": "l2",
+      "courseId": "c1",
+      "sectionId": "s1",
+      "title": "Environment Setup",
+      "type": "pdf",
+      "durationMinutes": 10,
+      "src": "/assets/pdf/c1-setup.pdf"
+    },
+    {
+      "id": "l3",
+      "courseId": "c1",
+      "sectionId": "s2",
+      "title": "Async Basics",
+      "type": "text",
+      "durationMinutes": 12,
+      "html": "<h2>Async Basics</h2><p>Learn asyncio...</p>"
+    },
+    {
+      "id": "l4",
+      "courseId": "c3",
+      "sectionId": "s3",
+      "title": "Component Lifecycle Review",
+      "type": "video",
+      "durationMinutes": 15,
+      "src": "/assets/video/c3-l1.mp4"
+    },
+    {
+      "id": "l5",
+      "courseId": "c3",
+      "sectionId": "s4",
+      "title": "useReducer Deep Dive",
+      "type": "video",
+      "durationMinutes": 25,
+      "src": "/assets/video/c3-l5.mp4"
+    },
+    {
+      "id": "l6",
+      "courseId": "c4",
+      "sectionId": "s5",
+      "title": "What is Machine Learning?",
+      "type": "video",
+      "durationMinutes": 18,
+      "src": "/assets/video/c4-l1.mp4"
+    },
+    {
+      "id": "l7",
+      "courseId": "c5",
+      "sectionId": "s7",
+      "title": "Empathy Mapping",
+      "type": "text",
+      "durationMinutes": 20,
+      "html": "<h2>Empathy Mapping</h2><p>Understanding user needs through empathy mapping...</p>"
+    }
+  ],
+  "enrollments": [
+    { "id": "e1", "userId": "u1", "courseId": "c1", "progress": 21 },
+    { "id": "e2", "userId": "u1", "courseId": "c3", "progress": 45 },
+    { "id": "e3", "userId": "u1", "courseId": "c7", "progress": 12 },
+    { "id": "e4", "userId": "u2", "courseId": "c5", "progress": 78 },
+    { "id": "e5", "userId": "u2", "courseId": "c13", "progress": 34 },
+    { "id": "e6", "userId": "u3", "courseId": "c4", "progress": 67 },
+    { "id": "e7", "userId": "u3", "courseId": "c11", "progress": 23 },
+    { "id": "e8", "userId": "u4", "courseId": "c17", "progress": 89 },
+    { "id": "e9", "userId": "u4", "courseId": "c15", "progress": 56 },
+    { "id": "e10", "userId": "u5", "courseId": "c6", "progress": 91 },
+    { "id": "e11", "userId": "u5", "courseId": "c19", "progress": 43 }
+  ],
+  "progress": [
+    {
+      "id": "p1",
+      "userId": "u1",
+      "courseId": "c1",
+      "lectureId": "l1",
+      "completed": true,
+      "completedAt": "2025-06-01T09:00:00.000Z"
+    },
+    {
+      "id": "p2",
+      "userId": "u1",
+      "courseId": "c1",
+      "lectureId": "l2",
+      "completed": false
+    },
+    {
+      "id": "p3",
+      "userId": "u1",
+      "courseId": "c3",
+      "lectureId": "l4",
+      "completed": true,
+      "completedAt": "2025-06-15T14:30:00.000Z"
+    },
+    {
+      "id": "p4",
+      "userId": "u2",
+      "courseId": "c5",
+      "lectureId": "l7",
+      "completed": true,
+      "completedAt": "2025-07-02T11:20:00.000Z"
+    },
+    {
+      "id": "p5",
+      "userId": "u3",
+      "courseId": "c4",
+      "lectureId": "l6",
+      "completed": true,
+      "completedAt": "2025-07-10T16:45:00.000Z"
+    },
+    {
+      "id": "p6",
+      "userId": "u5",
+      "courseId": "c6",
+      "lectureId": "l1",
+      "completed": true,
+      "completedAt": "2025-07-20T10:15:00.000Z"
+    }
+  ],
+  "reviews": [
+    {
+      "id": "r1",
+      "courseId": "c1",
+      "rating": 5,
+      "text": "Loved it!",
+      "authorName": "Priya",
+      "authorAvatar": "/assets/avatars/priya.png",
+      "affiliation": "ACME"
+    },
+    {
+      "id": "r2",
+      "courseId": "c3",
+      "rating": 5,
+      "text": "Excellent deep dive into React patterns. The instructor explains complex concepts clearly.",
+      "authorName": "Alex Thompson",
+      "authorAvatar": "/assets/avatars/alex.png",
+      "affiliation": "Tech Solutions Inc"
+    },
+    {
+      "id": "r3",
+      "courseId": "c4",
+      "rating": 4,
+      "text": "Great introduction to ML concepts, though could use more practical examples.",
+      "authorName": "Dr. Maria Santos",
+      "authorAvatar": "/assets/avatars/maria.png",
+      "affiliation": "DataCorp"
+    },
+    {
+      "id": "r4",
+      "courseId": "c5",
+      "rating": 5,
+      "text": "Perfect for beginners! The design thinking approach really clicked for me.",
+      "authorName": "James Wilson",
+      "authorAvatar": "/assets/avatars/james.png",
+      "affiliation": "Creative Agency"
+    },
+    {
+      "id": "r5",
+      "courseId": "c6",
+      "rating": 4,
+      "text": "Solid coverage of containerization. The Kubernetes section was particularly helpful.",
+      "authorName": "Rachel Green",
+      "authorAvatar": "/assets/avatars/rachel.png",
+      "affiliation": "Cloud Systems Ltd"
+    },
+    {
+      "id": "r6",
+      "courseId": "c7",
+      "rating": 5,
+      "text": "Best DSA course I've taken! Really prepared me for technical interviews.",
+      "authorName": "Kumar Patel",
+      "authorAvatar": "/assets/avatars/kumar.png",
+      "affiliation": "Software Engineer"
+    },
+    {
+      "id": "r7",
+      "courseId": "c13",
+      "rating": 4,
+      "text": "Comprehensive marketing course with actionable insights for digital campaigns.",
+      "authorName": "Emily Rodriguez",
+      "authorAvatar": "/assets/avatars/emily.png",
+      "affiliation": "Marketing Pro"
+    }
+  ],
+  "banners": [
+    {
+      "id": "b1",
+      "imageUrl": "/assets/banners/sale-aug.png",
+      "visibility": "now",
+      "scheduleDate": null,
+      "expiryDate": null
+    },
+    {
+      "id": "b2",
+      "imageUrl": "/assets/banners/diwali.png",
+      "visibility": "scheduled",
+      "scheduleDate": "2025-10-15T00:00:00.000Z",
+      "expiryDate": "2025-11-01T00:00:00.000Z"
+    },
+    {
+      "id": "b3",
+      "imageUrl": "/assets/banners/new-courses.png",
+      "visibility": "now",
+      "scheduleDate": null,
+      "expiryDate": "2025-09-30T23:59:59.000Z"
+    },
+    {
+      "id": "b4",
+      "imageUrl": "/assets/banners/winter-bootcamp.png",
+      "visibility": "scheduled",
+      "scheduleDate": "2025-12-01T00:00:00.000Z",
+      "expiryDate": "2025-12-31T23:59:59.000Z"
+    },
+    {
+      "id": "b5",
+      "imageUrl": "/assets/banners/certification-sale.png",
+      "visibility": "now",
+      "scheduleDate": null,
+      "expiryDate": "2025-10-01T23:59:59.000Z"
+    }
+  ],
+  "achievements": [
+    {
+      "id": "a1",
+      "userId": "u1",
+      "courseId": "c1",
+      "type": "completion",
+      "title": "Python Advanced Practitioner",
+      "description": "Completed Advanced Python Programming course",
+      "earnedAt": "2025-06-01T09:00:00.000Z",
+      "badgeUrl": "/assets/badges/python-advanced.png"
+    },
+    {
+      "id": "a2",
+      "userId": "u2",
+      "courseId": "c5",
+      "type": "completion",
+      "title": "UI/UX Design Graduate",
+      "description": "Successfully completed UI/UX Design Principles course",
+      "earnedAt": "2025-07-02T11:20:00.000Z",
+      "badgeUrl": "/assets/badges/ux-graduate.png"
+    },
+    {
+      "id": "a3",
+      "userId": "u4",
+      "courseId": "c17",
+      "type": "completion",
+      "title": "Agile Project Manager",
+      "description": "Mastered Agile Project Management methodologies",
+      "earnedAt": "2025-07-15T16:30:00.000Z",
+      "badgeUrl": "/assets/badges/agile-manager.png"
+    },
+    {
+      "id": "a4",
+      "userId": "u5",
+      "courseId": "c6",
+      "type": "completion",
+      "title": "DevOps Specialist",
+      "description": "Completed DevOps with Docker and Kubernetes",
+      "earnedAt": "2025-07-20T10:15:00.000Z",
+      "badgeUrl": "/assets/badges/devops-specialist.png"
+    }
+  ],
+  "categories": [
+    {
+      "id": "cat1",
+      "name": "Programming & Development",
+      "description": "Software development, programming languages, and coding skills",
+      "icon": "/assets/icons/programming.svg",
+      "courseIds": [
+        "c1",
+        "c2",
+        "c3",
+        "c7",
+        "c10",
+        "c11",
+        "c12",
+        "c14",
+        "c18",
+        "c19",
+        "c21"
+      ]
+    },
+    {
+      "id": "cat2",
+      "name": "Data Science & AI",
+      "description": "Machine learning, data analysis, and artificial intelligence",
+      "icon": "/assets/icons/data-science.svg",
+      "courseIds": ["c4", "c16", "c20"]
+    },
+    {
+      "id": "cat3",
+      "name": "Design & User Experience",
+      "description": "UI/UX design, visual design, and user research",
+      "icon": "/assets/icons/design.svg",
+      "courseIds": ["c5"]
+    },
+    {
+      "id": "cat4",
+      "name": "Cloud & DevOps",
+      "description": "Cloud computing, containerization, and deployment",
+      "icon": "/assets/icons/cloud.svg",
+      "courseIds": ["c6", "c9", "c22"]
+    },
+    {
+      "id": "cat5",
+      "name": "Business & Marketing",
+      "description": "Digital marketing, project management, and business skills",
+      "icon": "/assets/icons/business.svg",
+      "courseIds": ["c13", "c17"]
+    },
+    {
+      "id": "cat6",
+      "name": "Security & Database",
+      "description": "Cybersecurity, database management, and data protection",
+      "icon": "/assets/icons/security.svg",
+      "courseIds": ["c8", "c15"]
+    }
+  ],
+  "instructors": [
+    {
+      "id": "inst1",
+      "name": "Dr. Sarah Mitchell",
+      "bio": "Senior Software Engineer at Google with 10+ years in Python development",
+      "avatarUrl": "/assets/instructors/sarah-mitchell.png",
+      "expertise": ["Python", "Machine Learning", "Data Science"],
+      "courseIds": ["c1", "c4"],
+      "rating": 4.8,
+      "totalStudents": 78000
+    },
+    {
+      "id": "inst2",
+      "name": "Alex Chen",
+      "bio": "Frontend architect and React core contributor",
+      "avatarUrl": "/assets/instructors/alex-chen.png",
+      "expertise": ["React", "JavaScript", "TypeScript"],
+      "courseIds": ["c3", "c21"],
+      "rating": 4.9,
+      "totalStudents": 45000
+    },
+    {
+      "id": "inst3",
+      "name": "Maria Gonzalez",
+      "bio": "Lead UX Designer at Adobe, design thinking expert",
+      "avatarUrl": "/assets/instructors/maria-gonzalez.png",
+      "expertise": ["UX Design", "Design Thinking", "User Research"],
+      "courseIds": ["c5"],
+      "rating": 4.7,
+      "totalStudents": 32000
+    },
+    {
+      "id": "inst4",
+      "name": "James Kumar",
+      "bio": "DevOps consultant and Kubernetes certified administrator",
+      "avatarUrl": "/assets/instructors/james-kumar.png",
+      "expertise": ["Docker", "Kubernetes", "AWS", "DevOps"],
+      "courseIds": ["c6", "c9"],
+      "rating": 4.6,
+      "totalStudents": 56000
+    },
+    {
+      "id": "inst5",
+      "name": "Dr. Emily Watson",
+      "bio": "Computer Science professor specializing in algorithms and data structures",
+      "avatarUrl": "/assets/instructors/emily-watson.png",
+      "expertise": ["Algorithms", "Data Structures", "Computer Science Theory"],
+      "courseIds": ["c7"],
+      "rating": 4.8,
+      "totalStudents": 67000
+    }
+  ],
+  "notifications": [
+    {
+      "id": "n1",
+      "userId": "u1",
+      "type": "course_update",
+      "title": "New lecture added to Advanced Python Programming",
+      "message": "A new lecture on 'Advanced Decorators' has been added to your enrolled course.",
+      "read": false,
+      "createdAt": "2025-08-25T10:30:00.000Z",
+      "courseId": "c1"
+    },
+    {
+      "id": "n2",
+      "userId": "u2",
+      "type": "achievement",
+      "title": "Congratulations! Course completed",
+      "message": "You've successfully completed 'UI/UX Design Principles' and earned a certificate!",
+      "read": true,
+      "createdAt": "2025-07-02T11:25:00.000Z",
+      "courseId": "c5"
+    },
+    {
+      "id": "n3",
+      "userId": "u3",
+      "type": "reminder",
+      "title": "Continue your Machine Learning journey",
+      "message": "You haven't accessed your course in 5 days. Continue where you left off!",
+      "read": false,
+      "createdAt": "2025-08-20T09:00:00.000Z",
+      "courseId": "c4"
+    },
+    {
+      "id": "n4",
+      "userId": "u4",
+      "type": "course_recommendation",
+      "title": "New course recommendation",
+      "message": "Based on your interests, you might like 'Advanced Project Management Techniques'",
+      "read": false,
+      "createdAt": "2025-08-22T14:15:00.000Z"
+    },
+    {
+      "id": "n5",
+      "userId": "u5",
+      "type": "system",
+      "title": "Platform maintenance scheduled",
+      "message": "Scheduled maintenance on August 30th from 2-4 AM UTC. Courses will be temporarily unavailable.",
+      "read": false,
+      "createdAt": "2025-08-26T16:00:00.000Z"
+    }
+  ]
+}
