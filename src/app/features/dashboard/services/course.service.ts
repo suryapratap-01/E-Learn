@@ -16,7 +16,9 @@ export class CourseService {
   }
 
   getNewlyLaunched() {
-    return this.http.get<Course[]>(`/courses?_sort=id&_order=desc&_limit=16`);
+    return this.http
+      .get<Course[]>(`/courses?_limit=12`)
+      .pipe(map((event: any) => (event && event.body ? event.body : event)));
   }
 
   getLastViewed() {
