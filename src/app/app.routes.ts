@@ -11,12 +11,6 @@ export const routes: Routes = [
           import('./features/auth/sign-in/sign-in.component').then((m) => m.SignInComponent),
       },
       {
-        path: 'profile',
-        canActivate: [AuthGuard],
-        loadComponent: () =>
-          import('./features/profile/profile.component').then((m) => m.ProfileComponent),
-      },
-      {
         path: 'sign-up',
         loadComponent: () =>
           import('./features/auth/sign-up/sign-up.component').then((m) => m.SignUpComponent),
@@ -25,10 +19,24 @@ export const routes: Routes = [
     ],
   },
   {
+    path: 'profile',
+    canActivate: [AuthGuard],
+    loadComponent: () =>
+      import('./features/profile/profile.component').then((m) => m.ProfileComponent),
+  },
+  {
     path: '',
     canActivate: [AuthGuard],
     loadComponent: () =>
       import('./features/dashboard/home/home.component').then((m) => m.HomeComponent),
+  },
+  {
+    path: 'course/:courseId/lecture/:lectureId',
+    canActivate: [AuthGuard],
+    loadComponent: () =>
+      import('./features/course-player/course-player.component').then(
+        (m) => m.CoursePlayerComponent
+      ),
   },
   {
     path: 'course/:id',

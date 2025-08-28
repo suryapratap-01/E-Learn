@@ -29,31 +29,29 @@ export class AuthService {
 
   login(identifier: string, password: string, remember: boolean) {
     // try email first
-    return this.http
-      .get<User[]>(
-        `/users?email=${encodeURIComponent(identifier)}&password=${encodeURIComponent(password)}`
-      )
-      .pipe(
-        map((event: any) => (event && event.body ? event.body : event)), // extract body if HttpEvent
-        switchMap((list) =>
-          list.length
-            ? of(list)
-            : this.http
-                .get<User[]>(
-                  `/users?username=${encodeURIComponent(identifier)}&password=${encodeURIComponent(
-                    password
-                  )}`
-                )
-                .pipe(map((event: any) => (event && event.body ? event.body : event)))
-        ),
-        map((list) => {
-          const user = list[0];
-          if (!user) throw new Error('Invalid username/email or password');
-          const token = btoa(`${user.id}:${Date.now()}`); // demo token
-          this.session.setSession(user, token, remember);
-          return user;
-        })
-      );
+    return this.http.get<User[]>(`/users?email=${encodeURIComponent(identifier)}`).pipe(
+      map((event: any) => (event && event.body ? event.body : event)), // extract body if HttpEvent
+      switchMap((list) =>
+        list.length
+          ? of(list)
+          : this.http
+              .get<User[]>(`/users?username=${encodeURIComponent(identifier)}`)
+              .pipe(map((event: any) => (event && event.body ? event.body : event)))
+      ),
+      map((list) => {
+        const user = list[0];
+        if (!user) throw new Error('Invalid username/email or password');
+
+        // Manually verify the password
+        if (user.password !== password) {
+          throw new Error('Invalid username/email or password');
+        }
+
+        const token = btoa(`${user.id}:${Date.now()}`); // demo token
+        this.session.setSession(user, token, remember);
+        return user;
+      })
+    );
   }
 
   logout() {

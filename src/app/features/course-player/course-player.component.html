@@ -1,0 +1,201 @@
+<app-header></app-header>
+
+<div class="player-shell">
+  <div class="crumbs">
+    <a routerLink="/">Home</a> <span>›</span>
+    <span>Course Player</span>
+  </div>
+
+  <div class="layout">
+    <!-- LEFT: player area -->
+    <div class="stage">
+      @if (currentLecture?.type === 'video') {
+      <iframe
+        class="stage-frame"
+        [src]="safeUrl"
+        title="video"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen
+      >
+      </iframe>
+      } @if (currentLecture?.type === 'pdf') {
+      <embed class="stage-frame" [src]="safeUrl" type="application/pdf" />
+      } @if (currentLecture?.type === 'text') {
+      <div class="stage-text" [innerHTML]="currentLecture?.html"></div>
+      }
+
+      <nav class="tabs">
+        <button
+          class="tab"
+          [class.active]="activeTab() === 'overview'"
+          (click)="setActiveTab('overview')"
+        >
+          Overview
+        </button>
+        <button
+          class="tab"
+          [class.active]="activeTab() === 'author'"
+          (click)="setActiveTab('author')"
+        >
+          Author Details
+        </button>
+        <button
+          class="tab"
+          [class.active]="activeTab() === 'testimonials'"
+          (click)="setActiveTab('testimonials')"
+        >
+          Testimonials
+        </button>
+      </nav>
+
+      <!-- Tab Content -->
+      <div class="tab-content">
+        @if (activeTab() === 'overview') {
+        <div class="overview-tab">
+          <h3>{{ course()?.title }}</h3>
+          <p class="description">{{ course()?.description }}</p>
+
+          @if (course()?.whatYouWillLearn?.length) {
+          <div class="section">
+            <h4>What you'll learn</h4>
+            <ul class="learn-list">
+              @for (item of course()?.whatYouWillLearn; track item) {
+              <li>{{ item }}</li>
+              }
+            </ul>
+          </div>
+          } @if (course()?.skills?.length) {
+          <div class="section">
+            <h4>Skills you'll gain</h4>
+            <div class="skills">
+              @for (skill of course()?.skills; track skill) {
+              <span class="skill-chip">{{ skill }}</span>
+              }
+            </div>
+          </div>
+          } @if (course()?.requirements?.length) {
+          <div class="section">
+            <h4>Prerequisites</h4>
+            <ul class="requirements-list">
+              @for (req of course()?.requirements; track req) {
+              <li>{{ req }}</li>
+              }
+            </ul>
+          </div>
+          }
+
+          <div class="section">
+            <h4>Course Details</h4>
+            <div class="details-grid">
+              <div class="detail-item">
+                <span class="label">Level:</span>
+                <span class="value">{{ course()?.level }}</span>
+              </div>
+              <div class="detail-item">
+                <span class="label">Duration:</span>
+                <span class="value">{{ durationText() }}</span>
+              </div>
+              <div class="detail-item">
+                <span class="label">Rating:</span>
+                <span class="value"
+                  >{{ course()?.rating }}/5 ({{ course()?.reviewCount }} reviews)</span
+                >
+              </div>
+              <div class="detail-item">
+                <span class="label">Enrolled:</span>
+                <span class="value">{{ course()?.enrollmentCount | number }} students</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        } @if (activeTab() === 'author') {
+        <div class="author-tab">
+          <h3>About the Instructor</h3>
+          <div class="instructor-info">
+            <div class="instructor-name">{{ course()?.provider || 'Course Instructor' }}</div>
+            <p class="instructor-bio">
+              {{ course()?.provider || 'The instructor' }} brings years of industry experience and
+              expertise to deliver high-quality, practical content. With a focus on real-world
+              applications, they ensure students gain valuable skills that can be immediately
+              applied in their careers.
+            </p>
+          </div>
+
+          <div class="instructor-stats">
+            <div class="stat">
+              <span class="stat-number">{{ course()?.reviewCount || 0 }}</span>
+              <span class="stat-label">Student Reviews</span>
+            </div>
+            <div class="stat">
+              <span class="stat-number">{{ course()?.enrollmentCount || 0 | number }}</span>
+              <span class="stat-label">Students Taught</span>
+            </div>
+            <div class="stat">
+              <span class="stat-number">{{ course()?.rating || 0 }}</span>
+              <span class="stat-label">Average Rating</span>
+            </div>
+          </div>
+        </div>
+        } @if (activeTab() === 'testimonials') {
+        <div class="testimonials-tab">
+          <h3>Student Reviews</h3>
+          @if (reviews().length > 0) {
+          <div class="reviews-list">
+            @for (review of reviews(); track review.id) {
+            <div class="review-card">
+              <div class="review-header">
+                <img
+                  [src]="
+                    review.authorAvatar ||
+                    'https://ui-avatars.com/api/?name=' + encodeURIComponent(review.authorName)
+                  "
+                  [alt]="review.authorName"
+                  class="reviewer-avatar"
+                />
+                <div class="reviewer-info">
+                  <div class="reviewer-name">{{ review.authorName }}</div>
+                  @if (review.affiliation) {
+                  <div class="reviewer-affiliation">{{ review.affiliation }}</div>
+                  }
+                  <div class="review-rating">
+                    @for (star of [1,2,3,4,5]; track star) {
+                    <span class="star" [class.filled]="star <= review.rating">★</span>
+                    }
+                  </div>
+                </div>
+              </div>
+              <p class="review-text">{{ review.text }}</p>
+            </div>
+            }
+          </div>
+          } @else {
+          <div class="no-reviews">
+            <p>No reviews available yet. Be the first to review this course!</p>
+          </div>
+          }
+        </div>
+        }
+      </div>
+    </div>
+
+    <!-- RIGHT: curriculum -->
+    <aside class="curriculum">
+      <h3>Course Content</h3>
+
+      @for (s of sections; track s.id) {
+      <div class="sec">
+        <div class="sec-head">{{ s.title }}</div>
+        <ul class="lec-list">
+          @for (l of getLecturesForSection(s.id); track l.id) {
+          <li class="lec" [class.active]="isActive(l)" (click)="go(l)">
+            <span class="checkbox"> @if (l.completed) { ✓ } @else { ○ } </span>
+            <span class="title">{{ l.title }}</span>
+            <span class="dur">{{ l.durationMinutes || 0 }}min</span>
+          </li>
+          }
+        </ul>
+      </div>
+      }
+    </aside>
+  </div>
+</div>

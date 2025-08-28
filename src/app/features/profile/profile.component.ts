@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule, DatePipe } from '@angular/common';
 import { HeaderComponent } from '../dashboard/header/header.component';
 import { StatCardComponent } from '../../shared/components/stat-card/stat-card.component';
@@ -12,7 +12,7 @@ import { ProfileService } from './profile.service';
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.scss'],
 })
-export class ProfileComponent {
+export class ProfileComponent implements OnInit {
   private ps = inject(ProfileService);
 
   user = this.ps.user;

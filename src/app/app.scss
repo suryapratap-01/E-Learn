@@ -1,0 +1,25 @@
+/* Global font family override */
+* {
+  font-family: Helvetica, Arial, sans-serif !important;
+}
+
+/* Ensure all text elements use Helvetica */
+body,
+html,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span,
+div,
+a,
+button,
+input,
+textarea,
+select,
+label {
+  font-family: Helvetica, Arial, sans-serif !important;
+}

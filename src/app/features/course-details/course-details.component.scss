@@ -219,3 +219,11 @@ app-metrics-bar {
     gap: 8px;
   }
 }
+
+.lec-link {
+  cursor: pointer;
+}
+.lec-link:focus {
+  outline: 2px solid #4a7a59;
+  outline-offset: 2px;
+}

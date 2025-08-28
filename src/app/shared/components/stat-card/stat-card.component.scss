@@ -1,20 +1,102 @@
 .stat {
-  background: #2f2f2f;
-  color: #eaeaea;
-  border-radius: 16px;
-  padding: 20px;
-  min-height: 110px;
+  border-radius: 20px;
+  padding: 24px;
+  min-height: 140px;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  }
+
+  // Different colors for each card
+  &:nth-child(1) {
+    background: linear-gradient(135deg, #2d5a4f 0%, #1e3d35 100%);
+    color: #ffffff;
+
+    &::before {
+      content: '🎯';
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 2rem;
+      opacity: 0.3;
+    }
+  }
+
+  &:nth-child(2) {
+    background: linear-gradient(135deg, #1e3a5f 0%, #0f2847 100%);
+    color: #ffffff;
+
+    &::before {
+      content: '📚';
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 2rem;
+      opacity: 0.3;
+    }
+  }
+
+  &:nth-child(3) {
+    background: linear-gradient(135deg, #4a2c5a 0%, #2d1a3d 100%);
+    color: #ffffff;
+
+    &::before {
+      content: '🏆';
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 2rem;
+      opacity: 0.3;
+    }
+  }
+
+  // Geometric pattern overlay
+  &::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 100px;
+    height: 100px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    transform: rotate(45deg);
+  }
 }
+
 .t {
-  opacity: 0.8;
-  font-size: 0.9rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  opacity: 0.9;
+  margin-bottom: 8px;
+  position: relative;
+  z-index: 1;
 }
+
 .v {
-  font-size: 2rem;
-  font-weight: 700;
-  margin: 6px 0;
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin: 8px 0 12px;
+  position: relative;
+  z-index: 1;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
+
 .c {
-  opacity: 0.7;
-  font-size: 0.85rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  opacity: 0.9;
+  position: relative;
+  z-index: 1;
+  padding: 6px 12px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  display: inline-block;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
 }

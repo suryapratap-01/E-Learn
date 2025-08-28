@@ -83,10 +83,17 @@
           @if (expanded().has(s.id)) {
           <ul class="lects">
             @for (l of lecturesBy(s.id); track l.id) {
-            <li>
+            <!-- ▼ CHANGED: make each lecture a routerLink to the player -->
+            <li
+              class="lec-link"
+              [routerLink]="['/course', course()?.id, 'lecture', l.id]"
+              role="link"
+              tabindex="0"
+            >
               <span class="ltitle">{{ l.title }}</span>
               <span class="ldur">{{ l.durationMinutes }}m</span>
             </li>
+            <!-- ▲ CHANGED -->
             }
           </ul>
           }

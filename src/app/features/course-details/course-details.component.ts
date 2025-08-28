@@ -1,6 +1,6 @@
 import { Component, inject, signal, computed } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { CourseService } from '../dashboard/services/course.service';
 import type { Course } from '../../core/models/course.model';
 import { MetricsBarComponent } from './metrics-bar/metrics-bar.component';
@@ -24,6 +24,7 @@ type Lecture = {
 })
 export class CourseDetailsComponent {
   private route = inject(ActivatedRoute);
+  private router = inject(Router);
   private courseSvc = inject(CourseService);
 
   course = signal<Course | null>(null);
@@ -40,6 +41,10 @@ export class CourseDetailsComponent {
     this.courseSvc.getSections(id).subscribe((s) => this.sections.set(s));
     this.courseSvc.getLectures(id).subscribe((l) => this.lectures.set(l));
     this.courseSvc.getReviews(id).subscribe((r) => this.reviews.set(r));
+  }
+
+  goToLecture(courseId: string, lectureId: string) {
+    this.router.navigate(['/course', courseId, 'lecture', lectureId]);
   }
 
   toggle(sectionId: string) {

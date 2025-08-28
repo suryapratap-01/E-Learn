@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, signal, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HeaderComponent } from '../header/header.component';
 import { CourseCardComponent } from '../../../shared/components/course-card/course-card.component';
@@ -14,7 +14,7 @@ import type { Course } from '../../../core/models/course.model';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
   private course = inject(CourseService);
   private dash = inject(DashboardService);
 
@@ -24,10 +24,8 @@ export class HomeComponent {
 
   ngOnInit() {
     this.course.getLastViewed().subscribe((cs) => this.lastViewed.set(cs));
-    this.course.getNewlyLaunched().subscribe((event) => {
-      if (event.type === 4 && 'body' in event && event.body) {
-        this.newlyLaunched.set(event.body);
-      }
+    this.course.getNewlyLaunched().subscribe((courses) => {
+      this.newlyLaunched.set(courses);
     });
     this.dash.loadStats();
   }

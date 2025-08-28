@@ -13,7 +13,7 @@
 /* Left illustration panel (solid green) */
 .left {
   height: 100%;
-  background: #79b06a url('/assets/illustrations/login.svg') center/60% no-repeat;
+  background: #2d5a4f url('/assets/illustrations/login.svg') center/60% no-repeat;
 }
 
 /* Right form panel */
@@ -26,15 +26,17 @@
 }
 
 .brand {
-  color: #b5ff8a;
-  font-weight: 700;
-  margin-bottom: 24px;
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 2.5rem;
+  margin-bottom: 32px;
   letter-spacing: 0.02em;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 h1 {
   margin: 0 0 8px;
-  font-size: 2rem;
-  font-weight: 800;
+  font-size: 1.8rem;
+  font-weight: 700;
 }
 p {
   margin: 0 0 22px;
@@ -68,8 +70,8 @@ form {
 }
 .form-field input:focus {
   outline: none;
-  border-color: #79b06a;
-  box-shadow: 0 0 0 2px rgba(121, 176, 106, 0.25);
+  border-color: #2d5a4f;
+  box-shadow: 0 0 0 2px rgba(45, 90, 79, 0.25);
 }
 .form-field small {
   margin-top: 6px;
@@ -110,7 +112,7 @@ form {
   font-size: 0.9rem;
 }
 .row a {
-  color: #9fd98a;
+  color: #ffffff;
   text-decoration: none;
 }
 .row a:hover {
@@ -120,14 +122,18 @@ form {
 /* CTA */
 .cta {
   margin-top: 6px;
-  background: #79b06a;
-  color: #132314;
+  background: #2d5a4f;
+  color: #ffffff;
   font-weight: 800;
   letter-spacing: 0.02em;
   padding: 12px;
   border-radius: 12px;
   border: none;
   cursor: pointer;
+  transition: background 0.2s ease;
+}
+.cta:hover:not(:disabled) {
+  background: #1e3d35;
 }
 .cta:disabled {
   opacity: 0.5;
@@ -139,7 +145,7 @@ form {
   opacity: 0.85;
 }
 .foot a {
-  color: #9fd98a;
+  color: #ffffff;
   text-decoration: none;
 }
 .foot a:hover {

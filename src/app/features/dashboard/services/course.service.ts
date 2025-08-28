@@ -2,13 +2,19 @@ import { Injectable } from '@angular/core';
 import { HttpService } from '../../../core/api/http.service';
 import type { Course } from '../../../core/models/course.model';
 import { map } from 'rxjs';
+import { of } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class CourseService {
   constructor(private http: HttpService) {}
 
   searchTitles(query: string) {
-    const qp = query ? `?q=${encodeURIComponent(query)}&_limit=8` : '?_limit=8';
+    // Return empty array if no query to avoid showing all courses
+    if (!query || query.trim() === '') {
+      return of([]);
+    }
+
+    const qp = `?q=${encodeURIComponent(query)}&_limit=8`;
     return this.http.get<Course[]>(`/courses${qp}`).pipe(
       map((event: any) => (event && event.body ? event.body : event)), // extract body if HttpEvent
       map((list: Course[]) => list.map((c) => c.title))

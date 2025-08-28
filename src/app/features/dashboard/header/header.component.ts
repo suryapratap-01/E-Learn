@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, signal, OnInit, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { CourseService } from '../services/course.service';
@@ -14,7 +14,7 @@ import { AuthService } from '../../../core/auth/auth.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
   private search$ = new Subject<string>();
   private course = inject(CourseService);
   private auth = inject(AuthService);
@@ -59,5 +59,14 @@ export class HeaderComponent {
   logout() {
     this.auth.logout();
     location.href = '/auth/sign-in';
+  }
+
+  @HostListener('document:click', ['$event'])
+  onDocumentClick(event: Event) {
+    const target = event.target as HTMLElement;
+    const avatarElement = target.closest('.avatar');
+    if (!avatarElement && this.showMenu()) {
+      this.showMenu.set(false);
+    }
   }
 }

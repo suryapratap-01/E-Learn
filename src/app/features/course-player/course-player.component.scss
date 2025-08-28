@@ -1,0 +1,431 @@
+.player-shell {
+  min-height: 100vh;
+  background: #1f1f1f;
+  color: #eaeaea;
+}
+
+.crumbs {
+  padding: 1rem 2rem;
+  font-size: 0.9rem;
+  color: #eaeaea;
+  opacity: 0.9;
+
+  a {
+    color: #eaeaea;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  span {
+    margin: 0 0.5rem;
+  }
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 1fr 350px;
+  gap: 2rem;
+  padding: 0 2rem 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.stage {
+  background: #2b2b2b;
+  border: 1px solid #3a3a3a;
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.stage-frame {
+  width: 100%;
+  height: 500px;
+  border: none;
+}
+
+.stage-text {
+  padding: 2rem;
+  line-height: 1.6;
+  color: #eaeaea;
+
+  h1,
+  h2,
+  h3 {
+    margin-top: 0;
+    color: #eaeaea;
+  }
+
+  p {
+    margin-bottom: 1rem;
+  }
+}
+
+.tabs {
+  display: flex;
+  background: #292929;
+  padding: 8px;
+  border-radius: 0 0 14px 14px;
+  gap: 8px;
+}
+
+.tab {
+  flex: 1;
+  padding: 8px 12px;
+  background: #343434;
+  border: 1px solid #414141;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  color: #eaeaea;
+  transition: all 0.2s;
+
+  &:hover {
+    background: #3a3a3a;
+  }
+
+  &.active {
+    background: #3d5f47;
+    border-color: #4a7a59;
+  }
+}
+
+.curriculum {
+  background: #262626;
+  border: 1px solid #323232;
+  border-radius: 12px;
+  padding: 12px;
+  height: fit-content;
+  max-height: calc(100vh - 90px);
+  overflow: auto;
+
+  h3 {
+    margin: 4px 0 10px 0;
+    color: #eaeaea;
+    font-size: 1.1rem;
+  }
+}
+
+.sec {
+  margin-bottom: 10px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.sec-head {
+  font-weight: 700;
+  color: #cfeac6;
+  margin-bottom: 6px;
+  font-size: 0.95rem;
+}
+
+.lec-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 6px;
+}
+
+.lec {
+  display: grid;
+  grid-template-columns: 22px 1fr auto;
+  gap: 8px;
+  align-items: center;
+  padding: 8px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  background: #2d2d2d;
+  border: 1px solid #3a3a3a;
+  transition: all 0.2s;
+
+  &:hover {
+    background: #333;
+  }
+
+  &.active {
+    background: #3d5f47;
+    border-color: #4a7a59;
+  }
+}
+
+.checkbox {
+  font-size: 0.9rem;
+  color: #28a745;
+}
+
+.title {
+  font-size: 0.9rem;
+  color: #eaeaea;
+  line-height: 1.4;
+}
+
+.dur {
+  font-size: 0.8rem;
+  color: #eaeaea;
+  opacity: 0.8;
+}
+
+// Tab content styles
+.tab-content {
+  padding: 18px;
+  background: #2b2b2b;
+  border: 1px solid #3a3a3a;
+  border-top: 0;
+  border-radius: 0 0 14px 14px;
+  color: #eaeaea;
+  min-height: 300px;
+}
+
+.overview-tab,
+.author-tab,
+.testimonials-tab {
+  h3 {
+    margin: 0 0 1rem 0;
+    color: #eaeaea;
+    font-size: 1.5rem;
+  }
+
+  h4 {
+    margin: 1.5rem 0 0.75rem 0;
+    color: #eaeaea;
+    font-size: 1.1rem;
+  }
+}
+
+.description {
+  color: #eaeaea;
+  opacity: 0.95;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.section {
+  margin-bottom: 2rem;
+}
+
+.learn-list,
+.requirements-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  padding-left: 18px;
+
+  li {
+    padding: 0.5rem 0;
+    color: #eaeaea;
+    opacity: 0.9;
+  }
+}
+
+.skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.skill-chip {
+  background: #3a3a3a;
+  color: #eaeaea;
+  padding: 4px 10px;
+  border-radius: 16px;
+  font-size: 0.85rem;
+}
+
+.details-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.detail-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.75rem;
+  background: #343434;
+  border: 1px solid #3a3a3a;
+  border-radius: 8px;
+
+  .label {
+    font-weight: 600;
+    color: #eaeaea;
+    opacity: 0.8;
+  }
+
+  .value {
+    color: #eaeaea;
+  }
+}
+
+// Author tab styles
+.instructor-info {
+  margin-bottom: 2rem;
+}
+
+.instructor-name {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #eaeaea;
+  margin-bottom: 1rem;
+}
+
+.instructor-bio {
+  color: #eaeaea;
+  opacity: 0.9;
+  line-height: 1.6;
+}
+
+.instructor-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+}
+
+.stat {
+  text-align: center;
+  padding: 1.5rem;
+  background: #343434;
+  border: 1px solid #3a3a3a;
+  border-radius: 8px;
+
+  .stat-number {
+    display: block;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #79b06a;
+    margin-bottom: 0.5rem;
+  }
+
+  .stat-label {
+    color: #eaeaea;
+    opacity: 0.8;
+    font-size: 0.9rem;
+  }
+}
+
+// Testimonials tab styles
+.reviews-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.review-card {
+  background: #333;
+  border: 1px solid #444;
+  border-radius: 10px;
+  padding: 12px;
+}
+
+.review-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.reviewer-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.reviewer-info {
+  flex: 1;
+}
+
+.reviewer-name {
+  font-weight: 600;
+  color: #eaeaea;
+  margin-bottom: 0.25rem;
+}
+
+.reviewer-affiliation {
+  color: #eaeaea;
+  opacity: 0.7;
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+
+.review-rating {
+  display: flex;
+  gap: 0.1rem;
+  margin-left: auto;
+
+  .star {
+    color: #ddd;
+    font-size: 1.1rem;
+    font-weight: 700;
+
+    &.filled {
+      color: #ffc107;
+    }
+  }
+}
+
+.review-text {
+  color: #eaeaea;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.no-reviews {
+  text-align: center;
+  padding: 3rem;
+  color: #eaeaea;
+  opacity: 0.7;
+
+  p {
+    margin: 0;
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .layout {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding: 0 1rem 1rem;
+  }
+
+  .crumbs {
+    padding: 1rem;
+  }
+
+  .stage-frame {
+    height: 250px;
+  }
+
+  .curriculum {
+    order: -1;
+  }
+
+  .tab-content {
+    padding: 1rem;
+  }
+
+  .details-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .instructor-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .review-header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+    .reviewer-avatar {
+      margin-right: 0;
+      margin-bottom: 1rem;
+    }
+  }
+}

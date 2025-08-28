@@ -27,9 +27,9 @@ type ServerCourse = {
   status?: string;
 };
 
-// UI course shape used by CourseCard
+// UI course shape used by CourseCard - matches Course interface exactly
 export type UICourse = {
-  id: string;
+  id: number;
   title: string;
   provider?: string;
   thumbnailUrl: string;
@@ -38,7 +38,7 @@ export type UICourse = {
   rating: number;
   reviewCount: number;
   enrollmentCount: number;
-  badges?: string[];
+  badges?: ('New Launch' | 'Bestseller' | 'Highest Rated')[];
   progressPercent?: number;
 };
 
@@ -53,7 +53,7 @@ export class ProfileService {
   certificates = signal<number>(0);
 
   private toUI = (c: ServerCourse): UICourse => ({
-    id: c.id,
+    id: parseInt(c.id, 10), // Convert string id to number
     title: c.title,
     provider: c.provider,
     thumbnailUrl: c.thumbnailUrl,
@@ -62,7 +62,7 @@ export class ProfileService {
     rating: c.rating ?? 0,
     reviewCount: c.reviews ?? 0,
     enrollmentCount: c.enrollments ?? 0,
-    badges: c.badges ?? [],
+    badges: (c.badges as ('New Launch' | 'Bestseller' | 'Highest Rated')[]) ?? [],
   });
 
   load() {
@@ -70,30 +70,45 @@ export class ProfileService {
     if (!me) return;
 
     // 1) user profile
-    this.http.get<any>(`/users/${me.id}`).subscribe((u) => this.user.set(u as AppUser));
+    this.http
+      .get<AppUser>(`/users/${me.id}`)
+      .pipe(
+        map((event: any) => (event && event.body ? event.body : event)) // Handle HttpEvent
+      )
+      .subscribe((u: AppUser) => this.user.set(u));
 
     // 2) enrollments -> fetch those courses (single batch via query string)
     this.http
       .get<any[]>(`/enrollments?userId=${me.id}`)
       .pipe(
-        switchMap((enrs) => {
+        map((event: any) => (event && event.body ? event.body : event)), // Handle HttpEvent
+        switchMap((enrs: any[]) => {
           const ids: string[] = (enrs || []).map((e: any) => e.courseId);
           if (!ids.length) return [[] as UICourse[]];
           const qs = ids.map((id) => `id=${encodeURIComponent(id)}`).join('&');
-          return this.http
-            .get<any>(`/courses?${qs}`)
-            .pipe(map((arr: ServerCourse[]) => (arr || []).map(this.toUI)));
+          return this.http.get<ServerCourse[]>(`/courses?${qs}`).pipe(
+            map((event: any) => (event && event.body ? event.body : event)), // Handle HttpEvent
+            map((arr: ServerCourse[]) => (arr || []).map(this.toUI))
+          );
         })
       )
       .subscribe((courses) => this.enrolledCourses.set(courses));
 
     // 3) progress -> learning hours (if your progress rows have durationMinutes) + certificates
-    this.http.get<any[]>(`/progress?userId=${me.id}`).subscribe((rows) => {
-      const totalMinutes = (rows || []).reduce((sum, r) => sum + (r.durationMinutes || 0), 0);
-      this.learningHours.set(Math.round(totalMinutes / 60));
-      const certs = (rows || []).filter((r) => !!r.certificateEarned).length;
-      this.certificates.set(certs);
-    });
+    this.http
+      .get<any[]>(`/progress?userId=${me.id}`)
+      .pipe(
+        map((event: any) => (event && event.body ? event.body : event)) // Handle HttpEvent
+      )
+      .subscribe((rows: any[]) => {
+        const totalMinutes = (rows || []).reduce(
+          (sum: number, r: any) => sum + (r.durationMinutes || 0),
+          0
+        );
+        this.learningHours.set(Math.round(totalMinutes / 60));
+        const certs = (rows || []).filter((r: any) => !!r.certificateEarned).length;
+        this.certificates.set(certs);
+      });
   }
 
   stats = computed(() => ({
