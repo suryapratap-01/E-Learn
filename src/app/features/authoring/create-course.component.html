@@ -1,0 +1,112 @@
+<app-header></app-header>
+
+<div class="create-page">
+  <div class="crumbs">
+    <a routerLink="/">Home</a> › <a routerLink="/author">My Courses</a> › <span>New</span>
+  </div>
+  <h1>Create New Course</h1>
+
+  <form [formGroup]="form" (ngSubmit)="submit()" class="form">
+    <div class="row">
+      <label>Title*</label>
+      <input formControlName="title" placeholder="e.g. Google Data Analytics" />
+    </div>
+
+    <div class="row two">
+      <div>
+        <label>Provider</label>
+        <input formControlName="provider" placeholder="LinkedIn Learning, Coursera…" />
+      </div>
+      <div>
+        <label>Level*</label>
+        <select formControlName="level">
+          <option>Beginner</option>
+          <option>Intermediate</option>
+          <option>Advanced</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="row two">
+      <div>
+        <label>Duration (minutes)*</label>
+        <input type="number" formControlName="durationMinutes" min="1" />
+      </div>
+      <div>
+        <label>Thumbnail URL</label>
+        <input formControlName="thumbnailUrl" placeholder="/assets/courses/c9.jpg or https://…" />
+      </div>
+    </div>
+
+    <div class="row two">
+      <div>
+        <label>Status*</label>
+        <select formControlName="status">
+          <option>Draft</option>
+          <option>Published</option>
+          <option>Archived</option>
+        </select>
+      </div>
+      <div>
+        <label>Badges</label>
+        <div class="chips">
+          @for (b of badges.controls; let i = $index; track i) {
+          <span class="chip"
+            >{{ b.value }} <button type="button" (click)="removeArr(badges, i)">×</button></span
+          >
+          }
+          <input placeholder="Add badge and press Enter" (keydown.enter)="addBadge($event)" />
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <label>Description</label>
+      <textarea formControlName="description" rows="4"></textarea>
+    </div>
+
+    <div class="row">
+      <label>Skills</label>
+      <div class="chips">
+        @for (s of skills.controls; let i = $index; track i) {
+        <span class="chip"
+          >{{ s.value }} <button type="button" (click)="removeArr(skills, i)">×</button></span
+        >
+        }
+        <input placeholder="Add skill and press Enter" (keydown.enter)="addSkill($event)" />
+      </div>
+    </div>
+
+    <div class="row">
+      <label>What you'll learn</label>
+      <div class="chips">
+        @for (s of learn.controls; let i = $index; track i) {
+        <span class="chip"
+          >{{ s.value }} <button type="button" (click)="removeArr(learn, i)">×</button></span
+        >
+        }
+        <input placeholder="Add point and press Enter" (keydown.enter)="addLearnPoint($event)" />
+      </div>
+    </div>
+
+    <div class="row">
+      <label>Prerequisites</label>
+      <div class="chips">
+        @for (s of reqs.controls; let i = $index; track i) {
+        <span class="chip"
+          >{{ s.value }} <button type="button" (click)="removeArr(reqs, i)">×</button></span
+        >
+        }
+        <input
+          placeholder="Add prerequisite and press Enter"
+          (keydown.enter)="addRequirement($event)"
+        />
+      </div>
+    </div>
+
+    <div class="actions">
+      <a routerLink="/author" class="ghost">Cancel</a>
+      <button class="primary" type="submit">Publish / Save</button>
+    </div>
+  </form>
+</div>

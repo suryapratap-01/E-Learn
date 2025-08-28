@@ -1,0 +1,48 @@
+<app-header></app-header>
+
+<div class="author-page">
+  <div class="top">
+    <div class="crumbs"><a routerLink="/">Home</a> › <span>My Courses</span></div>
+    <a class="btn" routerLink="/author/new">+ Create New</a>
+  </div>
+
+  <div class="toolbar">
+    <div class="tabs">
+      <button [class.active]="tab() === 'Published'" (click)="tab.set('Published')">
+        Published
+      </button>
+      <button [class.active]="tab() === 'Draft'" (click)="tab.set('Draft')">Draft</button>
+      <button [class.active]="tab() === 'Archived'" (click)="tab.set('Archived')">Archived</button>
+    </div>
+    <input
+      class="search"
+      type="text"
+      placeholder="Search course"
+      [value]="q()"
+      (input)="updateSearch($event)"
+    />
+  </div>
+
+  @if (list().length) {
+  <div class="grid">
+    @for (c of list(); track c.id) {
+    <app-course-card
+      [course]="{
+        id: c.id,
+        title: c.title,
+        provider: c.provider,
+        thumbnailUrl: c.thumbnailUrl,
+        level: c.level,
+        durationMinutes: c.durationMinutes,
+        rating: c.rating ?? 0,
+        reviewCount: c.reviews ?? 0,
+        enrollmentCount: c.enrollments ?? 0,
+        badges: c.badges ?? []
+      }"
+    ></app-course-card>
+    }
+  </div>
+  } @else {
+  <div class="empty">No courses in "{{ tab() }}" yet.</div>
+  }
+</div>

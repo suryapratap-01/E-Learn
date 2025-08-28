@@ -1,0 +1,63 @@
+.author-page {
+  background: #1f1f1f;
+  color: #eaeaea;
+  min-height: 100svh;
+  padding: 16px 20px 40px;
+}
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.btn {
+  background: #b5ff8a;
+  color: #11341e;
+  padding: 8px 12px;
+  border-radius: 10px;
+  font-weight: 700;
+}
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin: 10px 0 16px;
+}
+.tabs {
+  display: flex;
+  gap: 8px;
+}
+.tabs button {
+  background: #343;
+  border: 1px solid #455;
+  color: #eaeaea;
+  padding: 6px 10px;
+  border-radius: 8px;
+}
+.tabs button.active {
+  background: #3d5f47;
+  border-color: #4a7a59;
+}
+.search {
+  background: #2a2a2a;
+  border: 1px solid #3a3a3a;
+  color: #eaeaea;
+  height: 36px;
+  padding: 0 10px;
+  border-radius: 8px;
+  min-width: 220px;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 14px;
+}
+.empty {
+  background: #262626;
+  border: 1px solid #363636;
+  padding: 18px;
+  border-radius: 10px;
+  text-align: center;
+  opacity: 0.9;
+}

@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { AuthGuard } from './core/auth/auth.gaurd';
+import { AdminAuthorGuard } from './core/auth/admin-author.gaurd';
 
 export const routes: Routes = [
   {
@@ -38,6 +39,19 @@ export const routes: Routes = [
         (m) => m.CoursePlayerComponent
       ),
   },
+  {
+    path: 'author',
+    canActivate: [AuthGuard, AdminAuthorGuard],
+    loadComponent: () =>
+      import('./features/authoring/my-courses.component').then((m) => m.MyCoursesComponent),
+  },
+  {
+    path: 'author/new',
+    canActivate: [AuthGuard, AdminAuthorGuard],
+    loadComponent: () =>
+      import('./features/authoring/create-course.component').then((m) => m.CreateCourseComponent),
+  },
+
   {
     path: 'course/:id',
     canActivate: [AuthGuard],
