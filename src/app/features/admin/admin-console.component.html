@@ -1,0 +1,77 @@
+<app-header></app-header>
+
+<div class="admin-page">
+  <div class="head">
+    <div class="crumbs"><a routerLink="/">Home</a> › <span>Admin Console</span></div>
+    <h1>Admin Console</h1>
+  </div>
+
+  <div class="cards">
+    <div class="card">
+      <div class="num">{{ users().length }}</div>
+      <div class="label">Users</div>
+    </div>
+    <!-- Slots for other admin tiles later (Dynamic Banners, etc.) -->
+  </div>
+
+  <div class="toolbar">
+    <input
+      class="search"
+      type="text"
+      placeholder="Search user"
+      [value]="q()"
+      (input)="q.set($any($event.target).value)"
+    />
+
+    <div class="sort">
+      <label>Sort:</label>
+      <button (click)="setSort('name')" [class.active]="sortBy() === 'name'">
+        Name
+        <span class="dir">{{ sortBy() === 'name' ? (sortDir() === 'asc' ? '↑' : '↓') : '' }}</span>
+      </button>
+      <button (click)="setSort('joinedAt')" [class.active]="sortBy() === 'joinedAt'">
+        Joined
+        <span class="dir">{{
+          sortBy() === 'joinedAt' ? (sortDir() === 'asc' ? '↑' : '↓') : ''
+        }}</span>
+      </button>
+    </div>
+  </div>
+
+  @if (loading()) {
+  <div class="loading">Loading users…</div>
+  } @else { @if (filtered().length) {
+  <div class="table">
+    <div class="thead">
+      <div>User</div>
+      <div>Email</div>
+      <div>Roles</div>
+      <div>Joined</div>
+      <div class="actions">Actions</div>
+    </div>
+
+    @for (u of filtered(); track u.id) {
+    <div class="row">
+      <div class="usercell">
+        <img [src]="u.avatarUrl || 'https://i.pravatar.cc/48'" alt="" />
+        <div>
+          <div class="name">{{ u.name }}</div>
+          <div class="bio muted" @if(u.bio)>{{ u.bio }}</div>
+        </div>
+      </div>
+      <div class="email">{{ u.email }}</div>
+      <div class="roles">
+        @for (r of (u.roles || []); track r) { <span class="pill">{{ r }}</span> }
+      </div>
+      <div class="joined">{{ u.joinedAt | date : 'mediumDate' }}</div>
+      <div class="actions">
+        <!-- Edit can be added later -->
+        <button class="danger" (click)="confirmDelete(u)">Delete</button>
+      </div>
+    </div>
+    }
+  </div>
+  } @else {
+  <div class="empty">No users found.</div>
+  } }
+</div>

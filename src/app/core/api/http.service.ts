@@ -15,4 +15,7 @@ export class HttpService {
   patch<T>(url: string, body: any, options?: any) {
     return this.http.patch<T>(this.base + url, body, options);
   }
+  delete<T>(url: string, options?: any) {
+    return this.http.delete<T>(this.base + url, options);
+  }
 }

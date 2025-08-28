@@ -6,6 +6,7 @@ import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import { SessionStore } from '../../../core/state/session.store';
 import { AuthService } from '../../../core/auth/auth.service';
+import { Role } from '../../../core/models/user.model';
 
 @Component({
   standalone: true,
@@ -59,6 +60,14 @@ export class HeaderComponent implements OnInit {
   logout() {
     this.auth.logout();
     location.href = '/auth/sign-in';
+  }
+
+  hasRole(role: Role): boolean {
+    return this.user()?.roles?.includes(role) ?? false;
+  }
+
+  canAccessAuthorFeatures(): boolean {
+    return this.hasRole('Author') || this.hasRole('Admin');
   }
 
   @HostListener('document:click', ['$event'])

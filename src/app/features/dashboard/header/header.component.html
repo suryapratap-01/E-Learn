@@ -34,8 +34,9 @@
       </div>
 
       <a routerLink="/profile" (click)="closeMenu()">My Profile</a>
+      @if (canAccessAuthorFeatures()) {
       <a routerLink="/author" (click)="closeMenu()">My Courses</a>
-      @if (user()?.roles?.includes('Admin')) {
+      } @if (hasRole('Admin')) {
       <a routerLink="/admin" (click)="closeMenu()">Admin Console</a>
       }
       <a routerLink="/blog" (click)="closeMenu()">Blog</a>

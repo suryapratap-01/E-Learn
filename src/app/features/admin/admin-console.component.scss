@@ -1,0 +1,161 @@
+.admin-page {
+  background: #1f1f1f;
+  color: #eaeaea;
+  min-height: 100svh;
+  padding: 16px 20px 40px;
+}
+.head h1 {
+  margin: 6px 0 12px;
+}
+.cards {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+.card {
+  background: #262626;
+  border: 1px solid #343434;
+  border-radius: 12px;
+  padding: 12px 14px;
+  min-width: 160px;
+}
+.card .num {
+  font-size: 1.6rem;
+  font-weight: 800;
+}
+.card .label {
+  opacity: 0.85;
+}
+
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin: 10px 0 10px;
+}
+.search {
+  background: #2a2a2a;
+  border: 1px solid #3a3a3a;
+  color: #eaeaea;
+  height: 36px;
+  padding: 0 10px;
+  border-radius: 8px;
+  min-width: 260px;
+}
+.sort {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.sort label {
+  opacity: 0.85;
+}
+.sort button {
+  background: #343434;
+  border: 1px solid #444;
+  color: #eaeaea;
+  padding: 6px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.sort button.active {
+  background: #3d5f47;
+  border-color: #4a7a59;
+}
+.dir {
+  opacity: 0.8;
+  margin-left: 2px;
+}
+
+.loading,
+.empty {
+  background: #262626;
+  border: 1px solid #343434;
+  border-radius: 12px;
+  padding: 18px;
+  text-align: center;
+  opacity: 0.9;
+}
+
+.table {
+  display: grid;
+  gap: 8px;
+}
+.thead,
+.row {
+  display: grid;
+  grid-template-columns: 2.5fr 2fr 1.8fr 1.4fr 1fr;
+  gap: 10px;
+  align-items: center;
+  padding: 8px 10px;
+  border-radius: 10px;
+}
+.thead {
+  background: #2a2a2a;
+  border: 1px solid #343434;
+  font-weight: 700;
+}
+.row {
+  background: #242424;
+  border: 1px solid #343434;
+}
+
+.usercell {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.usercell img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.name {
+  font-weight: 700;
+}
+.muted {
+  opacity: 0.8;
+  font-size: 0.9rem;
+}
+
+.roles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.pill {
+  background: #3b3b3b;
+  padding: 2px 8px;
+  border-radius: 9999px;
+  font-size: 0.8rem;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+.danger {
+  background: #742e2e;
+  border: 1px solid #8a3c3c;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.danger:hover {
+  background: #8a3c3c;
+}
+
+@media (max-width: 1000px) {
+  .thead,
+  .row {
+    grid-template-columns: 2.5fr 2fr 1.8fr 1fr;
+  }
+  .actions {
+    grid-column: 1 / -1;
+    justify-content: flex-start;
+  }
+}
